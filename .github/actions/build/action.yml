@@ -1,0 +1,12 @@
+name: 'Merge Locale Files'
+description: 'Merge all available locale files into one for each locale'
+branding:
+  icon: 'crosshair'
+  color: 'blue'
+inputs:
+  path:
+    description: 'Github $GITHUB_WORKSPACE Variable'
+    required: true
+runs:
+  using: 'node16'
+  main: 'dist/index.js'

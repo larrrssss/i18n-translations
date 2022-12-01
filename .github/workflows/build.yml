@@ -1,0 +1,24 @@
+name: Build Translation File
+on:
+  push:
+    branches: [ master ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          ref: master
+      - name: Merge Locale Files
+        uses: ./.github/actions/build
+        with:
+          path: ${{ github.workspace }}
+      - name: Push to build branch
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+
+          git add .
+          git commit -m "chore: update build output"
+          git push
