@@ -7,6 +7,9 @@ inputs:
   path:
     description: 'Github $GITHUB_WORKSPACE Variable'
     required: true
+outputs:
+  needpush:
+    description: 'Wheter there are new changes'
 runs:
   using: 'node16'
   main: 'dist/index.js'
