@@ -1,4 +1,11 @@
 {
   "hello": "Hello",
-  "world": "World"
+  "components": {
+    "buttons": {
+      "nested_button": "Nested Button"
+    }
+  },
+  "world": {
+    "world": "World"
+  }
 }
