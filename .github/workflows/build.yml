@@ -11,16 +11,16 @@ jobs:
         with:
           ref: master
       - name: Merge Locale Files
-        uses: ./.github/actions/build
+        uses: larrrssss/i18n-merge@v0.1.0
         id: merge
         with:
           path: ${{ github.workspace }}
-      - name: Push to build branch
-        if: ${{ steps.merge.outputs.needpush == '1' }}
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
+      # - name: Push to build branch
+      #   if: ${{ steps.merge.outputs.needpush == '1' }}
+      #   run: |
+      #     git config user.name github-actions
+      #     git config user.email github-actions@github.com
 
-          git add .
-          git commit -m "chore: update build output"
-          git push
+      #     git add .
+      #     git commit -m "chore: update build output"
+      #     git push
