@@ -14,7 +14,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
         with:
-          ref: main
+          ref: master
 
       - name: Merge Locale Files
         uses: larrrssss/i18n-merge@v0.1.7
