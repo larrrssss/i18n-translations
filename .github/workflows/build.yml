@@ -11,7 +11,7 @@ jobs:
         with:
           ref: master
       - name: Merge Locale Files
-        uses: larrrssss/i18n-merge@v0.1.5
+        uses: larrrssss/i18n-merge@v0.1.6
         id: merge
         with:
           workspace: ${{ github.workspace }}
