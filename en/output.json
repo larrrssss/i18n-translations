@@ -1,6 +1,6 @@
 {
   "hello": "Hello",
-  "": {
+  "components": {
     "buttons": {
       "nested_button": "Nested Button"
     }
