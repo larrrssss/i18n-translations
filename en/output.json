@@ -1,1 +1,11 @@
-{}
+{
+  "hello": "Hello",
+  "": {
+    "buttons": {
+      "nested_button": "Nested Button"
+    }
+  },
+  "world": {
+    "world": "World"
+  }
+}
