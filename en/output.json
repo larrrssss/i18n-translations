@@ -1,6 +1,6 @@
 {
   "hello": "Hello",
-  ": {
+  "": {
     "buttons": {
       "nested_button": "Nested Button"
     }
