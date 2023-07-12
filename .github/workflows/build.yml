@@ -1,26 +1,39 @@
-name: Build Translation File
+name: I18n Merge
+
 on:
   push:
-    branches: [ master ]
+    branches:
+      - master
+
 jobs:
-  build:
+  merge_i18n:
+    name: Merge i18n translation files
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
         with:
-          ref: master
+          ref: main
+
       - name: Merge Locale Files
         uses: larrrssss/i18n-merge@v0.1.7
         id: merge
         with:
           workspace: ${{ github.workspace }}
-      - name: Push to build branch
-        if: ${{ steps.merge.outputs.changes_detected == '1' }}
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
+          root: '/'
+          output_file_path: 'output.json'
+          locales_file_path: 'locales.json'
+          base_file_name: 'base.json'
 
-          git add .
-          git commit -m "chore: update build output"
+      # Push the output file to the main branch. You can update this step to handle the output file with your own custom logic.
+      - name: Push Output File
+        if: ${{ steps.merge.outputs.changes_detected == '1' }}
+        env:
+          CI_COMMIT_MESSAGE: Continuous Integration Build Artifacts
+          CI_COMMIT_AUTHOR: Continuous Integration
+        run: |
+          git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
+          git config --global user.email "username@users.noreply.github.com"
+          git commit -a -m "${{ env.CI_COMMIT_MESSAGE }}"
           git push
